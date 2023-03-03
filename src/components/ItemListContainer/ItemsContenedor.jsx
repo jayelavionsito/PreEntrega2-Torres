@@ -1,66 +1,35 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import 'bootstrap/dist/css/bootstrap.css';
-import IMG from '../../media/SONY A7SIII.jpg'
+import { DataContext } from "../../components/context/Dataprovider"
+import ItemsDetalleContenedor from '../ItemsDetalleContenedor/ItemsDetalleContenedor';
 
-const ItemsContenedor = () => {
+export const ItemsContenedor = () => {
+
+const value = useContext(DataContext)
+const [productos] = value.productos
+
   return (
     <>
-    <h1 className="title">Todos nuestros productos</h1>
+    <div>
+    <h1 className="title">Todos nuestros productos disponibles para alquilar</h1>
     <div className="productos">
-        <div className="producto">
-    <a href="#">
-        <div className="producto_img">
-            <img src={IMG} alt=""/>
-        </div>
-        </a>
-        <div className="producto_footer">
-            <h1>Title</h1>
-            <p>Categoria</p>
-            <p className="price"></p>
-        </div>
-        <div className="buttom">
-            <button className="btn">Añadir al carrito</button>
-            <a href="#">Vista</a>
-        </div>
-        </div>
-
-
-        <div className="producto">
-    <a href="#">
-        <div className="producto_img">
-            <img src={IMG} alt=""/>
-        </div>
-        </a>
-        <div className="producto_footer">
-            <h1>Title</h1>
-            <p>Categoria</p>
-            <p className="price"></p>
-        </div>
-        <div className="buttom">
-            <button className="btn">Añadir al carrito</button>
-            <a href="#">Vista</a>
-        </div>
-        </div>
-
-
-        <div className="producto">
-    <a href="#">
-        <div className="producto_img">
-            <img src={IMG} alt=""/>
-        </div>
-        </a>
-        <div className="producto_footer">
-            <h1>Title</h1>
-            <p>Categoria</p>
-            <p className="price"></p>
-        </div>
-        <div className="buttom">
-            <button className="btn">Añadir al carrito</button>
-            <a href="#">Vista</a>
-        </div>
-        </div>
+        {
+            productos.map(producto =>(
+            < ItemsDetalleContenedor 
+            key={producto.id} 
+            id={producto.id}
+            title={producto.title}
+            price={producto.price}
+            image={producto.image}
+            category={producto.category} 
+            cantidad={producto.cantidad} />
+            ))
+        }
+    </div>
+    
     </div>
     </>
+
   )
            
 

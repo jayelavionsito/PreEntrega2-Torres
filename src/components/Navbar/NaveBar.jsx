@@ -10,7 +10,6 @@ const NaveBar = () => {
 
 
   return (
-    <>
      <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <Link to={"/"} class="navbar-brand" >Pulp Rental</Link>
@@ -36,7 +35,6 @@ const NaveBar = () => {
     </div>
   </div>
 </nav>
-    </>
   )
 }
 
